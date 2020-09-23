@@ -1,4 +1,4 @@
-package com.eduardo.basico.Main;
+package com.eduardo.basico.main;
 
 import com.eduardo.basico.singleton.Singleton;
 
