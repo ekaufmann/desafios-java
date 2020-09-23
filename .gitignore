@@ -1,7 +1,7 @@
 # ignored files
-/*.class
-/.classpath
-/.project
+*.class
+.classpath
+.project
 
 # ignored folders
 workspace/
