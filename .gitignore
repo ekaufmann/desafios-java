@@ -1,7 +1,8 @@
 # ignored files
 *.class
-bin
-teste.java
+.classpath
+.project
 
 # ignored folders
 workspace/
+bin/
