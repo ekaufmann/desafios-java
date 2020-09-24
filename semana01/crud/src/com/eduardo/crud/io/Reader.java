@@ -7,17 +7,9 @@ import java.io.IOException;
 
 public class Reader {
 	
-	private File filename;
-	
-	private String[] fileData;
-	
-	public Reader(File filename)
+	private static String[] readFile(File filename)
 	{
-		this.filename = filename;
-	}
-	
-	private void readFile()
-	{
+		String[] fileData = null;
 		try
 		{
 			BufferedReader buffer = new BufferedReader(new FileReader(filename));
@@ -29,20 +21,17 @@ public class Reader {
 				data.append(linha);
 			}
 			buffer.close();
-			fileData = data.toString().split("\n");
+			fileData = data.toString().strip().split("\n");
 		}
 		catch(IOException e)
 		{
 			e.printStackTrace();
 		}
+		return fileData;
 	}
 	
-	public String[] getData()
+	public static String[] getData(File filename)
 	{
-		if(fileData == null)
-		{
-			readFile();
-		}
-		return fileData;
+		return readFile(filename);
 	}
 }
