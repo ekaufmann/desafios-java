@@ -6,8 +6,8 @@ public class Main {
 	
 	public static void main(String[] args)
 	{
-		Singleton singletonNumeros = Singleton.getInstance();
+		Singleton singletonNumbers = Singleton.getInstance();
 		
-		System.out.println(singletonNumeros);
+		System.out.println(singletonNumbers);
 	}
 }
