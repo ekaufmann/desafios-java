@@ -1,14 +1,16 @@
 package com.eduardo.crud.controller;
 
 import java.io.File;
+
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.eduardo.crud.aluno.Aluno;
 import com.eduardo.crud.io.Reader;
 import com.eduardo.crud.io.Writer;
 import com.eduardo.crud.util.AlunoObjectsCreator;
+
+import static com.eduardo.crud.util.Messages.*;
 
 public class AlunoController {
 
@@ -33,8 +35,7 @@ public class AlunoController {
 			}
 		}
 		
-		@SuppressWarnings("unchecked")
-		List<Aluno> data = (ArrayList<Aluno>) AlunoObjectsCreator.createList(Reader.getData(filename));
+		List<Aluno> data = AlunoObjectsCreator.createList(Reader.getData(filename));
 		
 		if(alunoController == null)
 		{
@@ -43,18 +44,23 @@ public class AlunoController {
 		return alunoController;
 	}
 	
-	public void create(Integer id, String name, String email)
+	public String create(Integer id, String name, String email)
 	{
+		if(name.equals("") || id == null || email.equals(""))
+		{
+			return INVALID_DATA;
+		}
 		Aluno aluno = new Aluno(id, name, email);
 		alunos.add(aluno);
 		saveData();
+		return REGISTERED;
 	}
 	
 	public String read()
 	{
 		if(alunos.size() == 0)
 		{
-			return "Não há alunos cadastrados!";
+			return EMPTY_FILE;
 		}
 		
 		StringBuilder output = new StringBuilder();
@@ -66,7 +72,7 @@ public class AlunoController {
 		return output.toString();
 	}
 	
-	public void update(Integer id, String name, String email)
+	public String update(Integer id, String name, String email)
 	{
 		Aluno alunoFound = null;
 		for(Aluno aluno : alunos)
@@ -80,6 +86,7 @@ public class AlunoController {
 		if(alunoFound == null)
 		{
 			create(id, name, email);
+			return REGISTERED;
 		}
 		else
 		{
@@ -93,18 +100,21 @@ public class AlunoController {
 			}
 		}
 		saveData();
+		return MODIFIED;
 	}
 	
-	public void delete(Integer id)
+	public String delete(Integer id)
 	{
 		for(Aluno aluno : alunos)
 		{
 			if(aluno.getId() == id)
 			{
 				alunos.remove(aluno);
+				saveData();
+				return DELETED;
 			}
 		}
-		saveData();
+		return INVALID_DATA;
 	}
 	
 	private void saveData()

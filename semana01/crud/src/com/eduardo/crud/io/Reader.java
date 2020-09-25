@@ -19,9 +19,10 @@ public class Reader {
 			while((linha = buffer.readLine()) != null)
 			{
 				data.append(linha);
+				data.append("\n");
 			}
-			buffer.close();
 			fileData = data.toString().strip().split("\n");
+			buffer.close();
 		}
 		catch(IOException e)
 		{

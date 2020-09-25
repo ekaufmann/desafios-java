@@ -7,7 +7,7 @@ import com.eduardo.crud.aluno.Aluno;
 
 public class AlunoObjectsCreator {
 
-	public static List<?> createList(String[] data)
+	public static List<Aluno> createList(String[] data)
 	{
 		List<Aluno> list = new ArrayList<>();
 		

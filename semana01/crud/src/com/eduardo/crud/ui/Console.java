@@ -28,9 +28,9 @@ public class Console {
 			
 			switch(input)
 			{
-				case 1:	inputDataAluno(); break;
-				case 2: showAlunos(); break;
-				case 3: modifyAluno(); break;
+				case 1:
+				case 2: inputDataAluno(input); break;
+				case 3: showAlunos(); break;
 				case 4: deleteAluno(); break;
 				case 5: showOptions(); break;
 				default: 
@@ -42,17 +42,25 @@ public class Console {
 	
 	private void showOptions()
 	{
-		UIUtil.printLN("Digite a opção desejada: \n");
+		UIUtil.printLN("\nDigite a opção desejada: \n");
 		UIUtil.printLN("1 - Criar novo aluno");
-		UIUtil.printLN("2 - Mostrar alunos criados");
-		UIUtil.printLN("3 - Alterar aluno já existente");
+		UIUtil.printLN("2 - Alterar aluno já existente");
+		UIUtil.printLN("3 - Mostrar alunos criados");
 		UIUtil.printLN("4 - Deletar registro de aluno");
 		UIUtil.printLN("5 - Mostrar menu de opções\n");
 	}
 	
-	private void inputDataAluno()
+	private void inputDataAluno(Integer input)
 	{
-		UIUtil.printLN("Cadastro de novo aluno:");
+		if(input == 1)
+		{
+			UIUtil.printLN("\nCadastro de novo aluno:\n");
+		} 
+		else
+		{
+			UIUtil.printLN("\nAlterar cadastro de aluno:\n");
+		}
+		
 		UIUtil.printLN("Informe a ID do aluno:");
 		Integer id = Integer.parseInt(inputUser.next());
 		inputUser.nextLine();
@@ -61,21 +69,27 @@ public class Console {
 		UIUtil.printLN("Informe o e-mail do aluno:");
 		String email = inputUser.nextLine().strip();
 		
-		alunoController.create(id, name, email);
+		if(input == 1)
+		{
+			UIUtil.printLN(alunoController.create(id, name, email));
+		} 
+		else
+		{
+			UIUtil.printLN(alunoController.update(id, name, email));
+		}
 	}
 	
 	private void showAlunos()
 	{
+		UIUtil.printLine();
 		UIUtil.print(alunoController.read());
-	}
-	
-	private void modifyAluno()
-	{
-		
 	}
 	
 	private void deleteAluno()
 	{
-		UIUtil.printLN("teste delete");
+		UIUtil.printLN("Informe a ID do aluno:");
+		Integer id = Integer.parseInt(inputUser.next());
+		inputUser.nextLine();
+		UIUtil.printLN(alunoController.delete(id));
 	}
 }
