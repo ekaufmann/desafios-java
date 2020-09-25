@@ -90,6 +90,7 @@ public class Console {
 	private void showAlunos()
 	{
 		UIUtil.printLine();
+		UIUtil.printLN("Alunos cadastrados:\n");
 		UIUtil.print(alunoController.read());
 	}
 	
