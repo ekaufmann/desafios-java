@@ -16,30 +16,19 @@ public class AlunoController {
 
 	private List<Aluno> alunos;
 	private static AlunoController alunoController;
-	private File filename;
 	
-	private AlunoController(File filename, List<Aluno> alunos)
+	private AlunoController(List<Aluno> alunos)
 	{
 		this.alunos = alunos;
-		this.filename = filename;
 	}
 	
-	public static AlunoController getController(File filename)
-	{		
-		if(!filename.exists())
-		{
-			try {
-				filename.createNewFile();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		List<Aluno> data = AlunoObjectsCreator.createList(Reader.getData(filename));
+	public static AlunoController getController()
+	{
+		List<Aluno> data = AlunoObjectsCreator.createList(Reader.getData());
 		
 		if(alunoController == null)
 		{
-			alunoController = new AlunoController(filename, data);
+			alunoController = new AlunoController(data);
 		}
 		return alunoController;
 	}
@@ -119,6 +108,6 @@ public class AlunoController {
 	
 	private void saveData()
 	{
-		Writer.saveData(filename, read());
+		Writer.saveData(read());
 	}
 }

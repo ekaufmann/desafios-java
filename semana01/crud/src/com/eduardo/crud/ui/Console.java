@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.Scanner;
 
 import com.eduardo.crud.controller.AlunoController;
+import com.eduardo.crud.util.Messages;
 import com.eduardo.crud.util.UIUtil;
 
 public class Console {
@@ -13,7 +14,7 @@ public class Console {
 	
 	public Console() {
 		inputUser = new Scanner(System.in);
-		this.alunoController = AlunoController.getController(new File("alunos.txt"));
+		this.alunoController = AlunoController.getController();
 	}
 	
 	public void render()
@@ -61,21 +62,29 @@ public class Console {
 			UIUtil.printLN("\nAlterar cadastro de aluno:\n");
 		}
 		
-		UIUtil.printLN("Informe a ID do aluno:");
-		Integer id = Integer.parseInt(inputUser.next());
-		inputUser.nextLine();
-		UIUtil.printLN("Informe o nome do aluno:");
-		String name = inputUser.nextLine().strip();
-		UIUtil.printLN("Informe o e-mail do aluno:");
-		String email = inputUser.nextLine().strip();
+		Integer id;
+		String name;
+		String email;
 		
-		if(input == 1)
-		{
-			UIUtil.printLN(alunoController.create(id, name, email));
-		} 
-		else
-		{
-			UIUtil.printLN(alunoController.update(id, name, email));
+		try {
+			UIUtil.printLN("Informe a ID do aluno:");
+			id = Integer.parseInt(inputUser.next());
+			inputUser.nextLine();
+			UIUtil.printLN("Informe o nome do aluno:");
+			name = inputUser.nextLine().strip();
+			UIUtil.printLN("Informe o e-mail do aluno:");
+			email = inputUser.nextLine().strip();
+			
+			if(input == 1)
+			{
+				UIUtil.printLN(alunoController.create(id, name, email));
+			} 
+			else
+			{
+				UIUtil.printLN(alunoController.update(id, name, email));
+			}
+		} catch (NumberFormatException e) {
+			UIUtil.printLN(Messages.INVALID_DATA);
 		}
 	}
 	

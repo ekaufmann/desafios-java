@@ -22,8 +22,8 @@ public class Writer {
 		}
 	}
 	
-	public static void saveData(File filename, String data)
+	public static void saveData(String data)
 	{
-		writeFile(filename, data);
+		writeFile(FileValidator.getFile(), data);
 	}
 }

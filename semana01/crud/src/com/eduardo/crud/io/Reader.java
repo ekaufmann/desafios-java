@@ -31,8 +31,8 @@ public class Reader {
 		return fileData;
 	}
 	
-	public static String[] getData(File filename)
+	public static String[] getData()
 	{
-		return readFile(filename);
+		return readFile(FileValidator.getFile());
 	}
 }
