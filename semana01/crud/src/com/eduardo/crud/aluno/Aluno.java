@@ -31,12 +31,12 @@ public class Aluno {
 	public String toString() 
 	{
 		StringBuilder output = new StringBuilder();
-		output.append("\nID - ");
 		output.append(id);
-		output.append("\nName - ");
+		output.append("\n");
 		output.append(name);
-		output.append("\nE-mail - ");
+		output.append("\n");
 		output.append(email);
+		output.append("\n");
 		
 		return output.toString();
 	}

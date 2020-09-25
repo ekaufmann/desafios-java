@@ -16,13 +16,14 @@ public class AlunoController {
 	private static AlunoController alunoController;
 	private File filename;
 	
-	private AlunoController()
+	private AlunoController(File filename, List<Aluno> alunos)
 	{
-		this.alunos = new ArrayList<>();
+		this.alunos = alunos;
+		this.filename = filename;
 	}
 	
-	public AlunoController getController(File filename)
-	{
+	public static AlunoController getController(File filename)
+	{		
 		if(!filename.exists())
 		{
 			try {
@@ -32,11 +33,12 @@ public class AlunoController {
 			}
 		}
 		
+		@SuppressWarnings("unchecked")
+		List<Aluno> data = (ArrayList<Aluno>) AlunoObjectsCreator.createList(Reader.getData(filename));
+		
 		if(alunoController == null)
 		{
-			alunoController = new AlunoController();
-			this.filename = filename;
-			getAlunos();
+			alunoController = new AlunoController(filename, data);
 		}
 		return alunoController;
 	}
@@ -50,6 +52,11 @@ public class AlunoController {
 	
 	public String read()
 	{
+		if(alunos.size() == 0)
+		{
+			return "Não há alunos cadastrados!";
+		}
+		
 		StringBuilder output = new StringBuilder();
 		for(Aluno aluno : alunos)
 		{
@@ -97,12 +104,7 @@ public class AlunoController {
 				alunos.remove(aluno);
 			}
 		}
-	}
-	
-	@SuppressWarnings("unchecked")
-	private void getAlunos()
-	{
-		alunos = (List<Aluno>) AlunoObjectsCreator.createList(Reader.getData(filename));
+		saveData();
 	}
 	
 	private void saveData()
