@@ -1,8 +1,5 @@
 package com.eduardo.crud.controller;
 
-import java.io.File;
-
-import java.io.IOException;
 import java.util.List;
 
 import com.eduardo.crud.aluno.Aluno;
