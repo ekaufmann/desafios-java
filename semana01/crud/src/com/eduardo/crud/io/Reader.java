@@ -9,7 +9,7 @@ public class Reader {
 	
 	private static String[] readFile(File filename)
 	{
-		String[] fileData = null;
+		String fileData = null;
 		try
 		{
 			BufferedReader buffer = new BufferedReader(new FileReader(filename));
@@ -19,16 +19,16 @@ public class Reader {
 			while((linha = buffer.readLine()) != null)
 			{
 				data.append(linha);
-				data.append("\n");
+				data.append(",");
 			}
-			fileData = data.toString().strip().split("\n");
+			fileData = data.toString().strip();
 			buffer.close();
 		}
 		catch(IOException e)
 		{
 			e.printStackTrace();
 		}
-		return fileData;
+		return fileData.split(",");
 	}
 	
 	public static String[] getData()

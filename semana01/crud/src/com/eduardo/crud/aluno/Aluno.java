@@ -4,13 +4,13 @@ public class Aluno {
 	
 	private Integer id;
 	private String name;
-	private String email;
+	private Integer idade;
 	
-	public Aluno(Integer id, String name, String email)
+	public Aluno(Integer id, String name, Integer idade)
 	{
 		this.id = id;
 		this.name = name;
-		this.email = email;
+		this.idade = idade;
 	}
 	
 	public Integer getId() {
@@ -22,9 +22,9 @@ public class Aluno {
 		this.name = name;
 	}
 	
-	public void setEmail(String email)
+	public void setIdade(Integer idade)
 	{
-		this.email = email;
+		this.idade = idade;
 	}
 	
 	@Override
@@ -35,7 +35,7 @@ public class Aluno {
 		output.append("\n");
 		output.append(name);
 		output.append("\n");
-		output.append(email);
+		output.append(idade);
 		output.append("\n");
 		
 		return output.toString();

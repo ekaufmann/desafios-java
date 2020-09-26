@@ -63,7 +63,7 @@ public class Console {
 		
 		Integer id;
 		String name;
-		String email;
+		String idade;
 		
 		try {
 			UIUtil.printLN("Informe a ID do aluno:");
@@ -71,16 +71,20 @@ public class Console {
 			inputUser.nextLine();
 			UIUtil.printLN("Informe o nome do aluno:");
 			name = inputUser.nextLine().strip();
-			UIUtil.printLN("Informe o e-mail do aluno:");
-			email = inputUser.nextLine().strip();
+			UIUtil.printLN("Informe a idade do aluno:");
+			idade = inputUser.nextLine();
 			
 			if(input == 1)
 			{
-				UIUtil.printLN(alunoController.create(id, name, email));
+				UIUtil.printLN(alunoController.create(id, name, Integer.parseInt(idade)));
 			} 
 			else
 			{
-				UIUtil.printLN(alunoController.update(id, name, email));
+				if(idade.equals(""))
+				{
+					idade = null;
+				}
+				UIUtil.printLN(alunoController.update(id, name, Integer.parseInt(idade)));
 			}
 		} catch (NumberFormatException e) {
 			UIUtil.printLN(Messages.INVALID_DATA);

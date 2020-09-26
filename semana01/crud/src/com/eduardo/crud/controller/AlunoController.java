@@ -30,13 +30,13 @@ public class AlunoController {
 		return alunoController;
 	}
 	
-	public String create(Integer id, String name, String email)
+	public String create(Integer id, String name, Integer idade)
 	{
-		if(name.equals("") || id == null || email.equals(""))
+		if(name.equals("") || id == null || idade == null)
 		{
 			return INVALID_DATA;
 		}
-		Aluno aluno = new Aluno(id, name, email);
+		Aluno aluno = new Aluno(id, name, idade);
 		alunos.add(aluno);
 		saveData();
 		return REGISTERED;
@@ -58,7 +58,7 @@ public class AlunoController {
 		return output.toString();
 	}
 	
-	public String update(Integer id, String name, String email)
+	public String update(Integer id, String name, Integer idade)
 	{
 		Aluno alunoFound = null;
 		for(Aluno aluno : alunos)
@@ -71,16 +71,16 @@ public class AlunoController {
 		
 		if(alunoFound == null)
 		{
-			create(id, name, email);
+			create(id, name, idade);
 			return REGISTERED;
 		}
 		else
 		{
 			if(name.equals(""))
 			{
-				alunoFound.setEmail(email);
+				alunoFound.setIdade(idade);
 			}
-			if(email.equals(""))
+			if(idade == null)
 			{
 				alunoFound.setName(name);
 			}
@@ -105,6 +105,6 @@ public class AlunoController {
 	
 	private void saveData()
 	{
-		Writer.saveData(read());
+		Writer.saveData(read().strip());
 	}
 }
