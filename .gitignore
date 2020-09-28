@@ -7,3 +7,4 @@ alunos.txt
 # ignored folders
 workspace/
 bin/
+.settings/
