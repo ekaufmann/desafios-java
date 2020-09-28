@@ -1,10 +1,10 @@
 # ignored files
 *.class
-.classpath
-.project
+*.classpath
+*.project
 alunos.txt
 
 # ignored folders
-workspace/
-bin/
-.settings/
+/workspace/
+/bin/
+/.settings/
