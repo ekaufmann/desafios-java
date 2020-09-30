@@ -15,7 +15,7 @@ public class Leitora extends LeitoraBase {
     }
 
     @Override
-    public void getDados() {
+    public void lerDados() {
         System.out.println("Digite o seu nome:");
         nome = input.nextLine();
         System.out.println("Digite a sua idade:");

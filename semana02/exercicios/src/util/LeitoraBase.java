@@ -10,12 +10,9 @@ public abstract class LeitoraBase {
         this.input = new Scanner(System.in);
     }
 
-    public abstract void getDados();
+    public abstract void lerDados();
 
     public void close() {
         input.close();
     }
-
-    @Override
-    public abstract String toString();
 }
