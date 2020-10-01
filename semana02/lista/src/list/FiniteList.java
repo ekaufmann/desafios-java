@@ -3,21 +3,19 @@ package list;
 public class FiniteList {
 
     protected static final byte MAX_LENGTH = 25;
-    private Object[] list;
+    protected Object[] list;
 
     public FiniteList() {
         this.list = new Object[MAX_LENGTH];
     }
 
-    public boolean add(Object obj) {
+    public void add(Object obj) {
         int index = 0;
         if(hasSpace()) {
             if((index = findNull()) != -1) {
                 list[index] = obj;
-                return true;
             }
         }
-        return false;
     }
 
     public void remove(Object obj) {
@@ -27,7 +25,7 @@ public class FiniteList {
         }
     }
 
-    private Object find(Object obj) {
+    protected Object find(Object obj) {
         for (int i = 0; i < list.length; i++) {
             if(obj == null) {
                 if (list[i] == obj) {
@@ -42,7 +40,7 @@ public class FiniteList {
         return -1;
     }
 
-    private int findNull() {
+    protected int findNull() {
         return (int) find(null);
     }
 
@@ -54,15 +52,13 @@ public class FiniteList {
         return false;
     }
 
-    private boolean hasSpace() {
+    protected boolean hasSpace() {
         return findNull() != -1;
     }
 
     public int size() {
         return list.length;
     }
-
-
 
     @Override
     public String toString() {
