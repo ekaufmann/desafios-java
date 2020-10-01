@@ -44,6 +44,13 @@ public class FiniteList {
         return (int) find(null);
     }
 
+    public int indexOf(Object obj) {
+        if(contains(obj) && obj != null) {
+            return (int)find(obj);
+        }
+        return -1;
+    }
+
     public boolean contains(Object obj) {
         int index = (int) find(obj);
         if(index != -1) {
@@ -58,6 +65,13 @@ public class FiniteList {
 
     public int size() {
         return list.length;
+    }
+
+    public Object getElementByIndex(int index) {
+        if(contains(list[index]) && list[index] != null) {
+            return list[index];
+        }
+        return null;
     }
 
     @Override

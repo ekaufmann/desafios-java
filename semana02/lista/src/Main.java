@@ -36,5 +36,8 @@ public class Main {
         System.out.println("Lista 2: " + lista2.toString());
         System.out.println("Tamanho lista 3: " + lista3.size());
         System.out.println("Lista 3: " + lista3.toString());
+
+        System.out.println(lista.getElementByIndex(9));
+        System.out.println(lista.indexOf(9));
     }
 }
