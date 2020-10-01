@@ -14,7 +14,8 @@ public class DoubleList extends FiniteList {
                 list[index] = obj;
             }
         } else {
-            increaseSize(list.length * 2);
+            maxLength = list.length * 2;
+            increaseSize(maxLength);
             add(obj);
         }
     }

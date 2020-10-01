@@ -14,7 +14,8 @@ public class HalfList extends DoubleList{
                 list[index] = obj;
             }
         } else {
-            increaseSize((list.length * 3) / 2);
+            maxLength = (list.length * 3) / 2;
+            increaseSize(maxLength);
             add(obj);
         }
     }

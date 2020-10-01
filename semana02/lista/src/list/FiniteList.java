@@ -2,11 +2,11 @@ package list;
 
 public class FiniteList {
 
-    protected static final byte MAX_LENGTH = 25;
+    protected int maxLength = 25;
     protected Object[] list;
 
     public FiniteList() {
-        this.list = new Object[MAX_LENGTH];
+        this.list = new Object[maxLength];
     }
 
     public void add(Object obj) {
