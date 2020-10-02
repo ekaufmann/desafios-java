@@ -1,3 +1,3 @@
-# Desafios Insiders
+# Desafios em Java
 
-Desafios realizados durante a formação Insiders 2020
+Desafios realizados visando ampliar os conhecimentos em Java.
