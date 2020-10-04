@@ -19,10 +19,16 @@ public class Application {
         Box largeBox = new LargeBox();
 
         delivery.preparePackage(smallBox);
+
+        System.out.println();
         delivery.setPackageStrategy(new SmallPackageStrategy());
         delivery.preparePackage(smallBox);
+
+        System.out.println();
         delivery.setPackageStrategy(new MediumPackageStrategy());
         delivery.preparePackage(mediumBox);
+
+        System.out.println();
         delivery.setPackageStrategy(new LargePackageStrategy());
         delivery.preparePackage(largeBox);
     }

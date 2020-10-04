@@ -8,7 +8,7 @@ public interface PackageStrategy {
 
     default void send(Box box) {
         System.out.printf("Sending the package from %s to %s\n", box.getSenderAddress(), box.getReceiverAddress());
-        System.out.printf("Price = route price + %d\n", getFee());
+        System.out.printf("Total = route price + $ %d,00\n", getFee());
     }
 
     int getFee();
